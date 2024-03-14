@@ -1,14 +1,33 @@
 # Default values for ncpl.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+application:
+  author: vrajesh
+  name: helm #Aadhar Vault Manager
+  type: api
 
 replicaCount: 1
 
-image:
-  repository: nginx
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+microservices:
+  vote:
+    image:
+      repository: ncplcr.azurecr.io/votemicroservicesarchitecture
+      pullPolicy: Always
+      tag: "v1"
+  
+  worker:
+    image:
+      repository: ncplcr.azurecr.io/workermicroservicesarchitecture
+      pullPolicy: Always
+      tag: "v1"
+      
+  
+  result:
+    image:
+      repository: ncplcr.azurecr.io/resultmicroservicesarchitecture
+      pullPolicy: Always
+      tag: "v1"
+
 
 imagePullSecrets: []
 nameOverride: ""
@@ -44,7 +63,7 @@ service:
   port: 80
 
 ingress:
-  enabled: false
+  enabled: true
   className: ""
   annotations: {}
     # kubernetes.io/ingress.class: nginx
