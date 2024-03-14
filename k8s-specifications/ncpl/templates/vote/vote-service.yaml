@@ -5,12 +5,10 @@ metadata:
     app: vote
   name: vote
 spec:
-  type: NodePort
+  type: LoadBalancer  # Change the service type to LoadBalancer
   ports:
   - name: "vote-service"
-    port: 5000
-    targetPort: 80
-    nodePort: 31000
+    port: 80  # Port exposed by the service
+    targetPort: 5000  # Port that the application is listening on
   selector:
     app: vote
-  
