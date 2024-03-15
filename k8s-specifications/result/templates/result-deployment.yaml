@@ -15,8 +15,7 @@ spec:
         app: result
     spec:
       containers:
-        name: result
-      - image: "{{ .Values.image.repository}}/{{ .Values.application.name }}:{{.Values.image.tag |  default .Chart.AppVersion}}" # Docker image to use
+      - name: result  # Moved 'name' field inside the container definition
+        image: "{{ .Values.image.repository }}/{{ .Values.application.name }}:{{ .Values.image.tag | default .Chart.AppVersion }}" # Docker image to use
         ports:
         - containerPort: 80
-          
