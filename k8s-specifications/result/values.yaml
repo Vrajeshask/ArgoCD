@@ -1,14 +1,18 @@
 # Default values for result.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-
+application:
+  author: vrajesh
+  name: helm #Aadhar Vault Manager
+  type: api
+  
 replicaCount: 1
 
 image:
   repository: ncplcr.azurecr.io/resultmicroservicesarchitecture
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "v1"
 
 imagePullSecrets: []
 nameOverride: ""
