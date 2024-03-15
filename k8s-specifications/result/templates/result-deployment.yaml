@@ -15,8 +15,7 @@ spec:
         app: result
     spec:
       containers:
-      - image: {{ .Values.microservices.result.image.repository }}:{{ .Values.microservices.result.image.tag }}
-        name: result
+      - image: "{{ .Values.image.repository}}/{{ .Values.application.name }}:{{.Values.image.tag |  default .Chart.AppVersion}}" # Docker image to use
         ports:
         - containerPort: 80
           name: result

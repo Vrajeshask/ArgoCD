@@ -15,7 +15,7 @@ spec:
         app: vote
     spec:
       containers:
-      - image: {{ .Values.microservices.result.image.repository }}:{{ .Values.microservices.vote.image.tag }}
+      - image: "{{ .Values.image.repository}}/{{ .Values.application.name }}:{{.Values.image.tag |  default .Chart.AppVersion}}" # Docker image to use
         name: vote
         ports:
         - containerPort: 80
