@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: my-app-ingress
+  name: vote-ingress
 spec:
   ingressClassName: azure-application-gateway
   rules:
@@ -11,6 +11,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: vote  # Name of the Service to forward traffic to
+            name: vote-service  # Name of the Service to forward traffic to
             port:
               number: 80  # Port on the Service
