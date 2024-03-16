@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment
+spec:
+  replicas: 3  # Number of desired replicas (pods)
+  selector:
+    matchLabels:
+      app: my-app  # Selector to match the pods controlled by this deployment
+  template:
+    metadata:
+      labels:
+        app: my-app  # Label for the pods controlled by this deployment
+    spec:
+      containers:
+      - name: nginx  # Name of the container
+        image: nginx:latest  # Docker image to use
+        imagePullPolicy: Always #by this everytime there will be a new image
+        ports:
+        - containerPort: 80  # Port the container exposes
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+
+
