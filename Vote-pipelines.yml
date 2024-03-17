@@ -77,13 +77,6 @@ stages:
       inputs:
         helmVersion: '2.14.1'
         installKubectl: true
-  
-  - job: Helm_package
-    displayName: Helm package
-    pool:
-      name: default   # Use a self-hosted agent
-    steps:
-    - checkout: self
     - task: HelmDeploy@0
       inputs:
         command: 'package'
