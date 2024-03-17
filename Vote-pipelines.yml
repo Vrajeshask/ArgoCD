@@ -18,7 +18,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '1785568d-e183-43cd-8eb9-bbb40f20afb0'
-  imageRepository: 'microservice'
+  imageRepository: 'Vote'
   containerRegistry: 'ncplcr.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/result/Dockerfile'
   tag: |
