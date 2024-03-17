@@ -21,7 +21,7 @@ variables:
   imageRepository: 'microservice'
   containerRegistry: 'ncplcr.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/result/Dockerfile'
-  tag: '$(Build.BuildId)'
+  tag: 'Vote$(Build.BuildId)'
 
   # Agent VM image name
   pool:
