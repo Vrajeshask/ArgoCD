@@ -21,11 +21,10 @@ variables:
   imageRepository: 'microservice'
   containerRegistry: 'ncplcr.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/result/Dockerfile'
-  tag: 'Vote$(Build.BuildId)'
+  tag: |
+    $(Build.BuildId)
+    latest
 
-  # Agent VM image name
-  pool:
-  name: default
 
 stages:
 - stage: Build
