@@ -64,7 +64,7 @@ stages:
         tags: |
           $(tag)
 
-- stage: Helm 
+- stage: Helm_install_and_package
   displayName: Helm install 
   jobs:
   - job: Helm
@@ -77,10 +77,7 @@ stages:
       inputs:
         helmVersion: '2.14.1'
         installKubectl: true
-
-- stage: Helm_package
-  displayName: Helm package 
-  jobs:
+  
   - job: Helm_package
     displayName: Helm package
     pool:
@@ -90,7 +87,7 @@ stages:
     - task: HelmDeploy@0
       inputs:
         command: 'package'
-        chartPath: 'MicroService/k8s-specifications/vote'
+        chartPath: '/home/ubuntu/myagent/_work/3/s/k8s-specifications/vote'
         chartVersion: '$(tag)'
 
 - stage: Artifact
