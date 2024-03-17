@@ -9,6 +9,8 @@ trigger:
   paths:
     include:
       - vote/*
+pool:
+  name: self-hosted
 
 resources:
 - repo: self
