@@ -90,7 +90,7 @@ stages:
     - task: HelmDeploy@0
       inputs:
         command: 'package'
-        chartPath: 'k8s-specifications/vote'
+        chartPath: 'MicroService/k8s-specifications/vote'
         chartVersion: '$(tag)'
 
 - stage: Artifact
