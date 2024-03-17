@@ -34,8 +34,9 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      vmImage: $(name)
+      name: default   # Use a self-hosted agent
     steps:
+    - checkout: self
     - task: Docker@2
       displayName: Build an image
       inputs:
@@ -51,8 +52,9 @@ stages:
   - job: Push
     displayName: Push
     pool:
-      vmImage: $(name)
+      name: default   # Use a self-hosted agent
     steps:
+    - checkout: self
     - task: Docker@2
       displayName: Push an image
       inputs:
