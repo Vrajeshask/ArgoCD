@@ -81,7 +81,7 @@ stages:
 - stage: Helm package
   displayName: Helm package 
   jobs:
-  - job: Helm_package
+  - job: Helmpackage
     displayName: Helm package
     pool:
       name: default   # Use a self-hosted agent
@@ -93,11 +93,11 @@ stages:
        chartPath: 'k8s-specifications/vote'
        chartVersion: '$(tag)'
 
-- stage: Helm package
-  displayName: Helm package 
+- stage: Artifact
+  displayName: Artifact 
   jobs:
-  - job: Helm_package
-    displayName: Helm package
+  - job: Artifact
+    displayName: Artifact
     pool:
       name: default   # Use a self-hosted agent
     steps:
