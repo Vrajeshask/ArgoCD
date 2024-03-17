@@ -78,10 +78,10 @@ stages:
         helmVersion: '2.14.1'
         installKubectl: true
 
-- stage: Helm package
+- stage: Helm_package
   displayName: Helm package 
   jobs:
-  - job: Helmpackage
+  - job: Helm_package
     displayName: Helm package
     pool:
       name: default   # Use a self-hosted agent
@@ -89,9 +89,9 @@ stages:
     - checkout: self
     - task: HelmDeploy@0
       inputs:
-       command: 'package'
-       chartPath: 'k8s-specifications/vote'
-       chartVersion: '$(tag)'
+        command: 'package'
+        chartPath: 'k8s-specifications/vote'
+        chartVersion: '$(tag)'
 
 - stage: Artifact
   displayName: Artifact 
