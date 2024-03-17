@@ -81,7 +81,7 @@ stages:
     - task: HelmDeploy@0
       inputs:
         command: 'package'
-        chartPath: 'home/ubuntu/myagent/_work/3/s/k8s-specifications/vote'
+        chartPath: '/k8s-specifications/vote'
 
 - stage: Artifact
   displayName: Artifact 
