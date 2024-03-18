@@ -10,7 +10,7 @@ trigger:
     include:
       - vote/*
 pool:
-  name: azure pipeline
+  vmImage: ubuntu-latest
 
 resources:
 - repo: self
@@ -33,7 +33,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      name: default   # Use a self-hosted agent
+      name: $(vmImage)   # Use a self-hosted agent
     steps:
     - checkout: self
     - task: Docker@2
@@ -51,7 +51,7 @@ stages:
   - job: Push
     displayName: Push
     pool:
-      name: default   # Use a self-hosted agent
+      name: $(vmImage)   # Use a self-hosted agent
     steps:
     - checkout: self
     - task: Docker@2
@@ -70,7 +70,7 @@ stages:
   - job: Helm
     displayName: Helm install
     pool:
-      name: default   # Use a self-hosted agent
+      name: $(vmImage)   # Use a self-hosted agent
     steps:
     - checkout: self
     - task: HelmInstaller@0
