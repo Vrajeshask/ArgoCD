@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: vote-deployment
+  name: my-vote-deployment
 spec:
-  replicas: 1
+  replicas: 2  # Number of desired replicas (pods)
   selector:
     matchLabels:
-      app: my-vote
+      app: my-vote  # Selector to match the pods controlled by this deployment
   template:
     metadata:
       labels:
-        app: my-vote
+        app: my-vote  # Label for the pods controlled by this deployment
     spec:
       containers:
-      - name: vote  # Note the corrected indentation here
-        image: ncplcr.azurecr.io/microservice:latest
-        imagePullPolicy: Always 
+      - name: vote  # Name of the container
+        image: ncplcr.azurecr.io/microservice:latest  # Docker image to use
+        imagePullPolicy: Always #by this everytime there will be a new image
         ports:
-        - containerPort: 80
+        - containerPort: 80  # Port the container exposes
