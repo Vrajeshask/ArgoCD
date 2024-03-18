@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: worker
-  name: worker
+  name: my-worker-deployment
 spec:
-  replicas: 1
+  replicas: 1  # Number of desired replicas (pods)
   selector:
     matchLabels:
-      app: worker
+      app: worker  # Selector to match the pods controlled by this deployment
   template:
     metadata:
       labels:
-        app: worker
+        app: worker  # Label for the pods controlled by this deployment
     spec:
       containers:
-      - name: worker  # Corrected indentation and added a space before "name"
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"  # Corrected indentation and added spaces
+      - name: worker  # Name of the container
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"  # Docker image to use
+        imagePullPolicy: Always #by this everytime there will be a new image
+        ports:
+        - containerPort: 80  # Port the container exposes
