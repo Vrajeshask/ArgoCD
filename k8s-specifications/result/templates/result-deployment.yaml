@@ -1,21 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: result
-  name: result
+  name: my-result-deployment
 spec:
-  replicas: 1
+  replicas: 1  # Number of desired replicas (pods)
   selector:
     matchLabels:
-      app: result
+      app: my-result  # Selector to match the pods controlled by this deployment
   template:
     metadata:
       labels:
-        app: result
+        app: my-result  # Label for the pods controlled by this deployment
     spec:
       containers:
-      - name: result  # Moved 'name' field inside the container definition
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}" # Docker image to use
+      - name: vote  # Name of the container
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"  # Docker image to use
+        imagePullPolicy: Always #by this everytime there will be a new image
         ports:
-        - containerPort: 80
+        - containerPort: 80  # Port the container exposes
