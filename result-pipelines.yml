@@ -81,19 +81,10 @@ stages:
     - task: HelmDeploy@0
       inputs:
         command: 'package'
-        chartPath: '/home/ubuntu/myagent/_work/3/s/k8s-specifications/result'
+        chartPath: 'k8s-specifications/result'
 
-- stage: Artifact
-  displayName: Artifact 
-  jobs:
-  - job: Artifact
-    displayName: Artifact
-    pool:
-      name: default   # Use a self-hosted agent
-    steps:
-    - checkout: self
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '/home/ubuntu/myagent/_work/3/s/k8s-specifications/result'
+        targetPath: '$(Build.ArtifactStagingDirectory)'
         artifact: 'helm-result'
         publishLocation: 'pipeline'
