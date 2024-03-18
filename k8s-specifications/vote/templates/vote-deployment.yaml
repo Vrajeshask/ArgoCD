@@ -1,8 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: vote
   name: vote
 spec:
   replicas: 1
@@ -17,6 +15,7 @@ spec:
       containers:
       - name: vote  # Note the corrected indentation here
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: Always 
         ports:
         - containerPort: 80
   
