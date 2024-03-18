@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: vote  # Note the corrected indentation here
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        image: ncplcr.azurecr.io/microservice:latest
         imagePullPolicy: Always 
         ports:
         - containerPort: 80
