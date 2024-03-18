@@ -1,11 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: result-service
+  name: my-result-service
 spec:
   selector:
-    app: result
+    app: my-result
   ports:
-  - port: 80            # Port exposed by the service
-    targetPort: 80    # Port that the application is listening on
-  type: LoadBalancer
+    - protocol: TCP
+      port: 80  # Port on the service
+      targetPort: 80  # Port on the pods
+  type: LoadBalancer  # Exposes the service internally within the cluster
