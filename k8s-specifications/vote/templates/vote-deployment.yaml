@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: my-vote-deployment
 spec:
-  replicas: 2  # Number of desired replicas (pods)
+  replicas: 1  # Number of desired replicas (pods)
   selector:
     matchLabels:
       app: my-vote  # Selector to match the pods controlled by this deployment
