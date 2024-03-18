@@ -11,6 +11,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: result # Name of the Service to forward traffic to
+            name: my-result # Name of the Service to forward traffic to
             port:
               number: 80  # Port on the Service
