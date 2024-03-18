@@ -73,6 +73,7 @@ stages:
       inputs:
         command: 'package'
         chartPath: 'k8s-specifications/worker'
+        chartVersion: '$(Build.BuildId)'
 
     - task: PublishPipelineArtifact@1
       inputs:
