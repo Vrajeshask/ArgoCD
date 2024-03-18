@@ -19,6 +19,7 @@ variables:
   imageRepository: 'Result'
   containerRegistry: 'ncplcr.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/result/Dockerfile'
+  vmImageName: 'ubuntu-latest'
   tag: |
     $(Build.BuildId)
     latest
