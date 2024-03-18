@@ -9,8 +9,6 @@ trigger:
   paths:
     include:
       - worker/*
-pool:
-  name: self-hosted
 
 resources:
 - repo: self
@@ -21,6 +19,8 @@ variables:
   imageRepository: 'Worker'
   containerRegistry: 'ncplcr.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/worker/Dockerfile'
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
   tag: |
     $(Build.BuildId)
     latest
@@ -33,7 +33,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      name: default   # Use a self-hosted agent
+     vmImage: $(vmImageName)   # Use a self-hosted agent
     steps:
     - checkout: self
     - task: Docker@2
@@ -45,15 +45,6 @@ stages:
         Dockerfile: 'worker/Dockerfile'
         tags: '$(tag)'
           
-- stage: Push
-  displayName: Push 
-  jobs:
-  - job: Push
-    displayName: Push
-    pool:
-      name: default   # Use a self-hosted agent
-    steps:
-    - checkout: self
     - task: Docker@2
       displayName: Push an image
       inputs:
@@ -70,7 +61,7 @@ stages:
   - job: Helm
     displayName: Helm install
     pool:
-      name: default   # Use a self-hosted agent
+     vmImage: $(vmImageName)   # Use a self-hosted agent
     steps:
     - checkout: self
     - task: HelmInstaller@0
