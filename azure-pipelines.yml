@@ -94,6 +94,6 @@ stages:
     - checkout: self
     - task: PublishPipelineArtifact@1
       inputs:
-        targetPath: '$(Build.ArtifactStagingDirectory)'
+        targetPath: '/home/ubuntu/myagent/_work/3/s/k8s-specifications/worker'
         artifact: 'helm-worker'
         publishLocation: 'pipeline'
