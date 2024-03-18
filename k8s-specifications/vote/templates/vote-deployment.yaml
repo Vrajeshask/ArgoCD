@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: vote  # Name of the container
-        image: ncplcr.azurecr.io/microservice:latest  # Docker image to use
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"  # Docker image to use
         imagePullPolicy: Always #by this everytime there will be a new image
         ports:
         - containerPort: 80  # Port the container exposes
