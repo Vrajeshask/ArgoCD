@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: ncplcr.azurecr.io/votemicroservicesarchitecture
+  repository: ncplcr.azurecr.io/vote
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
