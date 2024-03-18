@@ -10,7 +10,7 @@ trigger:
     include:
       - vote/*
 pool:
-  name: self-hosted
+  name: azure pipeline
 
 resources:
 - repo: self
