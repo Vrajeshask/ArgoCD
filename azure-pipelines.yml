@@ -49,7 +49,9 @@ stages:
           # Additional properties that will be passed to the scanner, 
           # Put one key=value per line, example:
           # sonar.exclusions=**/*.bin
-          sonar.java.binary=.
+          sonar.java.binary=Worker.csproj
+          sonar.cs.msbuild.project=Worker.csproj
+          sonar.cs.files=Program.cs
       
     - task: SonarQubeAnalyze@5
       inputs:
