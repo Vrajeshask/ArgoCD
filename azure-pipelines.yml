@@ -59,9 +59,16 @@ stages:
     - task: SonarQubePrepare@5
       inputs:
         SonarQube: 'soanr-new'
-        scannerMode: 'MSBuild'
-        projectKey: 'azureworker'
-        projectName: 'azureworker'
+        scannerMode: 'CLI'
+        configMode: 'manual'
+        cliProjectKey: 'azureworker'
+        cliProjectName: 'micro-worker'
+        cliSources: 'worker'
+        extraProperties: |
+          # Additional properties that will be passed to the scanner, 
+          # Put one key=value per line, example:
+          # sonar.exclusions=**/*.bin
+          sonar.java.binary=.
       
     - task: SonarQubeAnalyze@5
       inputs:
