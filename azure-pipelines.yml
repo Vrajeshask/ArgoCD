@@ -27,6 +27,26 @@ variables:
 
 
 stages:
+- stage: maven
+  jobs:
+  - job: maven
+    pool:
+     vmimage: $(vmImageName)
+    steps:
+    - checkout: self
+    - task: Maven@4
+      inputs:
+        mavenPomFile: 'pom.xml'
+        publishJUnitResults: true
+        testResultsFiles: '**/surefire-reports/TEST-*.xml'
+        testRunTitle: 'demo'
+        javaHomeOption: 'JDKVersion'
+        mavenVersionOption: 'Default'
+        mavenAuthenticateFeed: false
+        effectivePomSkip: false
+        sonarQubeRunAnalysis: true
+        sqMavenPluginVersionChoice: 'latest'
+      
 - stage: sonarqube
   displayName: sonarqube 
   jobs:
