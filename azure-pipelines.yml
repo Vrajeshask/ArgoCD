@@ -27,6 +27,22 @@ variables:
 
 
 stages:
+- stage: sonarqube
+  displayName: sonarqube 
+  jobs:
+  - job: sonarqube
+    displayName: sonarqube
+    pool:
+     vmImage: $(vmImageName)   # Use a self-hosted agent
+    steps:
+    - checkout: self
+    - task: SonarQubePrepare@5
+      inputs:
+        SonarQube: 'sonar'
+        scannerMode: 'MSBuild'
+        projectKey: 'azureworker'
+        projectName: 'azureworker'
+      
 - stage: Build
   displayName: Build 
   jobs:
