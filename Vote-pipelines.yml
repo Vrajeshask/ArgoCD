@@ -43,7 +43,6 @@ stages:
         command: 'build'
         Dockerfile: 'vote/Dockerfile'
         tags: '$(tag)'
-      
     - task: Docker@2
       displayName: Push an image
       inputs:
@@ -53,29 +52,23 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-
-- stage: Helm_install_and_package
-  displayName: Helm install 
-  jobs:
-  - job: Helm
-    displayName: Helm install
-    pool:
-     vmImage: $(vmImageName)   # Use a self-hosted agent
-    steps:
-    - checkout: self
     - task: HelmInstaller@0
+      displayName: Helm install
       inputs:
         helmVersion: '2.14.1'
         installKubectl: true
 
     - task: HelmDeploy@0
+      displayName: Helm Package
       inputs:
         command: 'package'
         chartPath: 'k8s-specifications/vote'
         chartVersion: '$(Build.BuildId)'
 
     - task: PublishPipelineArtifact@1
+      displayName: Publish pipeline
       inputs:
         targetPath: '$(Build.ArtifactStagingDirectory)'
         artifact: 'helm-vote'
         publishLocation: 'pipeline'
+
