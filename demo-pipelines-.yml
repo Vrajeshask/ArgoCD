@@ -73,3 +73,58 @@ stages:
         artifact: 'helm-vote'
         publishLocation: 'pipeline'
 
+- stage: Deveplomentbranch
+  condition: eq(variables['Build.SourceBranch'],'refs/heads/development')
+  displayName: "Deploying to Development Environment"
+  dependsOn: Build
+  jobs:
+    - deployment: DevelopmentJob
+      pool:
+        vmImage: ubuntu-latest
+      environment: Development
+      strategy:
+       runOnce:
+         deploy:
+          steps:
+            - checkout: self
+            - task: HelmDeploy@0
+              inputs:
+                connectionType: 'Azure Resource Manager'
+                azureSubscription: 'ncpl'
+                azureResourceGroup: 'ncpl-rg'
+                kubernetesCluster: 'ncpl-cluster'
+                namespace: 'demo-dev'
+                command: 'upgrade'
+                chartType: 'Name'
+                chartName: 'helmvotedemo'
+                chartVersion: '$(Build.Build.Id)'
+                releaseName: 'helmvote'
+                arguments: '--set image.tag=$(Build.Buildid)'
+
+- stage: Productionbranch
+  condition: eq(variables['build.SourceBranch'], 'refs/heads/prod')
+  displayName: "Deploying to Production Environment"
+  dependsOn: Build
+  jobs:
+    - deployment: ProductionJOb
+      pool:
+        vmImage: ubuntu-latest
+      environment: Production
+      strategy:
+       runOnce:
+         deploy:
+          steps:
+            - checkout: self
+            - task: HelmDeploy@0
+              inputs:
+                connectionType: 'Azure Resource Manager'
+                azureSubscription: 'ncpl'
+                azureResourceGroup: 'ncpl-rg'
+                kubernetesCluster: 'ncpl-cluster'
+                namespace: 'demo-prod'
+                command: 'upgrade'
+                chartType: 'Name'
+                chartName: 'helmvotedemo'
+                chartVersion: '$(Build.Build.Id)'
+                releaseName: 'helmvote'
+                arguments: '--set image.tag=$(Build.Buildid)'
