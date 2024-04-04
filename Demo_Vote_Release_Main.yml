@@ -81,7 +81,7 @@ stages:
         kubernetesCluster: 'ncpl-cluster'
         command: 'upgrade'
         chartType: 'FilePath'
-        chartPath: '$(System.DefaultWorkingDirectory)/vote-*.tgz'
+        chartPath: '$(System.DefaultWorkingDirectory)/_Vote/helm-vote/vote-*.tgz'
         chartVersion: '$(Build.Buildid)'
         releaseName: 'helm-vote'
         arguments: '--set image.tag=$(Build.Buildid)'
