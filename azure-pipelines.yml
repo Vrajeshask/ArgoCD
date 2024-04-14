@@ -12,7 +12,7 @@ pool:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '6d98ab55-5471-477e-b47c-a3c92999a578'
-  imageRepository: 'ncplcr '
+  imageRepository: 'new '
   containerRegistry: 'ncplcr.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
