@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 # Set the repository URL
-REPO_URL="https://qvgeelotjj25amolcfbnuj4z4gzp7lilfnpx3wha4vojv6lbyldq@dev.azure.com/patelvrajeshazure/ARGOCD/_git/ARGOCD
+REPO_URL="https://qvgeelotjj25amolcfbnuj4z4gzp7lilfnpx3wha4vojv6lbyldq@dev.azure.com/patelvrajeshazure/ARGOCD/_git/ARGOCD"
 
 # Clone the git repository into the /tmp directory
 git clone "$REPO_URL" /tmp/temp_repo
