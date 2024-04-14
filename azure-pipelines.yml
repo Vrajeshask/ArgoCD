@@ -46,5 +46,5 @@ stages:
           ls
     - task: ShellScript@2
       inputs:
-        scriptPath: 'updateK8.sh'
+        scriptPath: 'updatek8.sh'
         args: 'vote $(imageRepository) $(tag)'
