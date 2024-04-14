@@ -46,4 +46,4 @@ stages:
     - task: ShellScript@2
       inputs:
         scriptPath: 'updatek8.sh'
-        args: 'app2 $(imageRepository) $(tag)'
+        args: 'app $(imageRepository) $(tag)'
