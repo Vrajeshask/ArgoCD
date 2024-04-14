@@ -7,7 +7,7 @@ trigger:
 - QA
 
 pool:
-  name: Default
+  name: Azure Pipelines
 
 variables:
   # Container registry service connection established during pipeline creation
