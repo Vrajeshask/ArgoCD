@@ -44,6 +44,7 @@ stages:
           pwd
           
           ls
+          dos2unix updatek8.sh
           chmod +x updatek8.sh
           ./updatek8.sh vote new 300
     - task: ShellScript@2
