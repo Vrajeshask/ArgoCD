@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: ncplcr.azurecr.io/app2:382
+        image: ncplcr.azurecr.io/app2:383
         ports:
         - containerPort: 80
 ---
