@@ -12,7 +12,7 @@ pool:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '6d98ab55-5471-477e-b47c-a3c92999a578'
-  imageRepository: 'new '
+  imageRepository: 'app2'
   containerRegistry: 'ncplcr.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
@@ -46,4 +46,4 @@ stages:
     - task: ShellScript@2
       inputs:
         scriptPath: 'updatek8.sh'
-        args: 'vote $(imageRepository) $(tag)'
+        args: 'app2 $(imageRepository) $(tag)'
