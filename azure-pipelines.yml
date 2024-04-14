@@ -12,9 +12,9 @@ pool:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '6d98ab55-5471-477e-b47c-a3c92999a578'
-  imageRepository: 'votingapp'
-  containerRegistry: 'abhishekazurecicd.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/result/Dockerfile'
+  imageRepository: 'ncplcr '
+  containerRegistry: 'ncplcr.azurecr.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
 
 stages:
