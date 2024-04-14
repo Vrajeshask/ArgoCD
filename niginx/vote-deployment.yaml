@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: ncplcr.azurecr.io/new:333
+        image: ncplcr.azurecr.io/new:334
         ports:
         - containerPort: 80
