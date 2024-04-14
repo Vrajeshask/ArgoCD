@@ -1,0 +1,49 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- QA
+
+pool:
+  name: Default
+
+variables:
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: '6d98ab55-5471-477e-b47c-a3c92999a578'
+  imageRepository: 'new '
+  containerRegistry: 'ncplcr.azurecr.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+  tag: '$(Build.BuildId)'
+
+stages:
+- stage: BuildandPush
+  jobs:
+  - job: BuildandPush
+    displayName: BuildandPush
+    steps:
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'ncplcr'
+        repository: 'new'
+        command: 'buildAndPush'
+        Dockerfile: 'app_1/Dockerfile'
+
+- stage: Update
+  displayName: Update 
+  jobs:
+  - job: Update
+    displayName: Update
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          ls 
+          chmod +x updatek8.sh
+          dos2unix updatek8.sh
+     
+    - task: ShellScript@2
+      inputs:
+        scriptPath: 'updatek8.sh'
+        args: 'vote $(imageRepository) $(tag)'
