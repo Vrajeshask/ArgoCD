@@ -7,7 +7,7 @@ trigger:
 - QA
 
 pool:
-  vmImage: ubuntu-latest
+  name: Default
 
 variables:
   # Container registry service connection established during pipeline creation
