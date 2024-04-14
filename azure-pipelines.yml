@@ -44,6 +44,7 @@ stages:
           pwd
           
           ls
+          ./updatek8.sh vote new 300
     - task: ShellScript@2
       inputs:
         scriptPath: 'updatek8.sh'
