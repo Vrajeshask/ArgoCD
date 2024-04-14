@@ -4,6 +4,7 @@ metadata:
   name: demo-deployment
 spec:
   replicas: 3
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
       app: demo
