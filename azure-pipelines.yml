@@ -28,7 +28,7 @@ stages:
         containerRegistry: 'ncplcr'
         repository: 'new'
         command: 'buildAndPush'
-        Dockerfile: 'Dockerfile'
+        Dockerfile: 'app_1/Dockerfile'
 
 - stage: Update
   displayName: Update 
