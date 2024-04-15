@@ -15,7 +15,7 @@ spec:
   source:
     repoURL: https://patelvrajeshazure@dev.azure.com/patelvrajeshazure/ARGOCD/_git/ARGOCD
     targetRevision: HEAD
-    path: nginx
+    path: niginx
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
