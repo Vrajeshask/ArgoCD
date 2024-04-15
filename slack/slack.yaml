@@ -15,7 +15,7 @@ spec:
   source:
     repoURL: https://qvgeelotjj25amolcfbnuj4z4gzp7lilfnpx3wha4vojv6lbyldq@dev.azure.com/patelvrajeshazure/ARGOCD/_git/ARGOCD
     targetRevision: HEAD
-    path: niginx
+    path: slack
   destination:
     server: https://kubernetes.default.svc
   syncPolicy:
