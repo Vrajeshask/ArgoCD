@@ -13,7 +13,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://patelvrajeshazure@dev.azure.com/patelvrajeshazure/ARGOCD/_git/ARGOCD
+    repoURL: https://qvgeelotjj25amolcfbnuj4z4gzp7lilfnpx3wha4vojv6lbyldq@dev.azure.com/patelvrajeshazure/ARGOCD/_git/ARGOCD
     targetRevision: HEAD
     path: niginx
   destination:
